@@ -1,0 +1,47 @@
+public static void quickSort(int[] arr, int left, int right) {
+		if (left < right) {
+			int i = left;
+			int j = right;
+			int x = arr[i];
+
+			while (i < j) {
+				while (i < j && arr[j] > x) 
+					j--;
+				if (i < j) 
+					arr[i++] = arr[j];
+				while (i < j && arr[i] < x) 
+					i++;
+				if (i < j) 
+					arr[j--] = arr[i];
+			}
+			arr[i] = x;
+			quickSort(arr, left, i - 1);
+			quickSort(arr, i + 1, right);
+		}
+	}
+
+	public static void quickSort1(int[] arr, int l, int r) {
+		if (l < r) {
+			int i, j, x;
+
+			i = l;
+			j = r;
+			x = arr[i];
+			while (i < j) {
+				while (i < j && arr[j] > x)
+					j--; // 从右向左找第一个小于x的数
+				if (i < j)
+					arr[i++] = arr[j];
+				while (i < j && arr[i] < x)
+					i++; // 从左向右找第一个大于x的数
+				if (i < j)
+					arr[j--] = arr[i];
+			}
+			arr[i] = x;
+			quickSort1(arr, l, i - 1); /* 递归调用 */
+			quickSort1(arr, i + 1, r); /* 递归调用 */
+		}
+	}
+  ### 快排
+  
+  
