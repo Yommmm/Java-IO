@@ -1,4 +1,6 @@
 http://www.cnblogs.com/ityouknow/p/6037431.html
+http://www.cnblogs.com/skywang12345/p/3603935.html
+http://www.cnblogs.com/best/p/7474442.html
 
     var post_data={"name":"test001","pass":"xxxx"};  
     $.ajax({  
