@@ -51,3 +51,20 @@ do
         echo $! > "$CMP_HOME/pid/${SRV_NAME[i]}.pid"
     fi
 done
+
+
+#!/bin/bash
+CMP_HOME="/opt/cmp"
+
+SRV_NAME[0]="hicloud.network.console.admin"
+SRV_NAME[1]="hicloud.network.console.user"
+SRV_NAME[2]="hicloud.network.core.task"
+SRV_NAME[3]="hicloud.network.service.impl"
+
+for i in "${SRV_NAME[@]}"
+do
+    if [ -f "$CMP_HOME/pid/$i.pid" ]; then
+        kill `cat "$CMP_HOME/pid/$i.pid"`
+        rm -rf "$CMP_HOME/pid/$i.pid"
+    fi
+done
