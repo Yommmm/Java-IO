@@ -15,3 +15,39 @@ http://www.cnblogs.com/best/p/7474442.html
             //调用失败  
         }  
     });  
+
+
+#!/bin/bash
+CMP_HOME="/opt/cmp"
+
+
+SRV_NAME[0]="hicloud.storage.console.admin"
+EXE_NAME[0]="hicloud.storage.console.admin-1.0.0-RC89-exec.war"
+
+SRV_NAME[1]="hicloud.storage.console.user"
+EXE_NAME[1]="hicloud.storage.console.user-1.0.0-RC85-exec.war"
+
+SRV_NAME[2]="hicloud.storage.core.task"
+EXE_NAME[2]="hicloud.storage.core.task-1.0.0-RC91-exec.jar"
+
+SRV_NAME[3]="hicloud.storage.service.impl"
+EXE_NAME[3]="hicloud.storage.service.impl-1.0.1-RC45-exec.jar"
+
+SRV_NAME[4]="hicloud.workflow.console.admin"
+EXE_NAME[4]="hicloud.workflow.console.admin-1.1.1-RC20-exec.war"
+
+SRV_NAME[5]="hicloud.workflow.console.user"
+EXE_NAME[5]="hicloud.workflow.console.user-1.1.1-RC20-exec.war"
+
+SRV_NAME[6]="hicloud.workflow.service.impl"
+EXE_NAME[6]="hicloud.workflow.service.impl-1.1.1-RC43-exec.jar"
+
+for i in {0..6}
+do
+    if [ -f "$CMP_HOME/pid/${SRV_NAME[i]}.pid" ]; then
+        echo "${SRV_NAME[i]} is running."
+    else
+        java -jar "$CMP_HOME/bin/${EXE_NAME[i]}" > "$CMP_HOME/logs/${SRV_NAME[i]}.log" 2>&1 &
+        echo $! > "$CMP_HOME/pid/${SRV_NAME[i]}.pid"
+    fi
+done
